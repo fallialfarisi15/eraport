@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 
-const App=() => {
+const Profile=() => {
   return (
     <View style={styles.view1}>
       <View style={styles.headerContent}>
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Profile;
