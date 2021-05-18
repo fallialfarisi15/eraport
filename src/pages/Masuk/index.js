@@ -11,17 +11,20 @@ import {
 } from "react-native";
 import {Background} from '../../assets';
 
-export default function Masuk() {
+const Masuk = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const onPress = () => {
+      navigation.navigate('Home')
+  }
     return (
          <ImageBackground style={styles.background} source={Background}>
 
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="email"
+          placeholder="Email"
           placeholderTextColor="#003f5c"
           onChangeText={(email) => setEmail(email)}
           
@@ -38,12 +41,13 @@ export default function Masuk() {
         />
       </View>
  
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>LOGIN</Text>
+      <TouchableOpacity style={styles.loginBtn}onPress={onPress}>
+        <Text style={styles.text}>LOGIN</Text>
       </TouchableOpacity>
        </ImageBackground>
     )
 }
+export default Masuk;
 
 const styles = StyleSheet.create({
      background: {
@@ -80,11 +84,8 @@ const styles = StyleSheet.create({
 
   text: {
     position: "absolute" ,
-    width: "80%" ,
-    height:"30%" ,
-    left: 27 ,
-    top: 27 ,
-    fontSize: 18,
+    fontSize: 15,
+    
 
   },
 
