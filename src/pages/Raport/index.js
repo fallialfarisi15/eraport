@@ -1,10 +1,21 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ScrollView, SafeAreaView } from 'react-native'
-import Form from '../../components/Form';
-const Raport = () => {
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ScrollView, SafeAreaView, Alert } from 'react-native'
+import {Form, Biodata} from '../../components'
+import {Back} from '../../assets'
+
+const Raport = ({navigation}) => {
+   const onPressBack = () => {
+      navigation.navigate('Home')
+  }
+
     return (
       <View style={styles.container}>
           <View style={styles.header}>
+        
+          <TouchableOpacity style={styles.back}onPress={onPressBack}>
+          <Image style={styles.avatar1} source={Back}/>
+          </TouchableOpacity>
+           
             <View style={styles.headerContent}>
                 <Text style={styles.name}>
                   Input Nilai
@@ -15,6 +26,7 @@ const Raport = () => {
           
           <ScrollView>
           <View style={styles.bodyContent}>
+          <Biodata/>
             <View style={styles.mapel}>
               <Text style={styles.text}>Pendidikan agama</Text>
               <Form />
@@ -45,8 +57,8 @@ const Raport = () => {
 
 const styles = StyleSheet.create({
   container:{
-    flexDirection:'column',
-    justifyContent:'center',
+    flex: 1,
+    backgroundColor: '#DCE1E8',
   },
   header:{
     backgroundColor: "#51A1FF",
@@ -54,6 +66,7 @@ const styles = StyleSheet.create({
   headerContent:{
     padding:15,
     alignItems: 'center',
+    marginTop:-50,
   },
   name:{
     fontSize:22,
@@ -66,10 +79,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     flexWrap: 'wrap',
   },
-  icon: {
-    width:60,
-    height:60,
-  },
+
   info:{
     fontSize:13,
     color: "#696969",
@@ -78,16 +88,31 @@ const styles = StyleSheet.create({
     fontSize:17,
     
   },
-    inputView: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 0,
-    width: "100%",
-    height: 40,
-    marginBottom: 30,
-  },
+
   mapel:{
+    marginTop:20,
     alignItems:'center',
-    
+  },
+   avatar1: {
+    width:44,
+    height:30,
+  },
+  back:{
+   backgroundColor: "#51A1FF",
+    width:50,
+    borderRadius: 15,
+    height:50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000000',
+    shadowOpacity: .5,
+    shadowOffset: {
+      height:2,
+      width:-2
+    },
+    elevation:3,
+    marginStart:3,
+    marginTop:15,
   }
 
 })

@@ -12,11 +12,34 @@ import {
 import {Background} from '../../assets';
 
 const Masuk = ({navigation}) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  
 
-  const onPress = () => {
-      navigation.navigate('Home')
+  function login() {
+    if (username == "" || password == "") {
+      alert("masukan username atau password");
+    } else {
+      fetch("http://localhost/serverpam/login.php", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `username=${username}&password=${password}`,
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          setUsername("");
+          setPassword("");
+          if (json == "login berhasil") {
+            navigation.replace("Home", {
+              user: username,
+            });
+          } else {
+            alert("username atau password salah");
+          }
+        });
+    }
   }
     return (
          <ImageBackground style={styles.background} source={Background}>
@@ -26,7 +49,7 @@ const Masuk = ({navigation}) => {
           style={styles.TextInput}
           placeholder="Email"
           placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(username) => setUsername(username)}
           
         />
       </View>
@@ -41,7 +64,7 @@ const Masuk = ({navigation}) => {
         />
       </View>
  
-      <TouchableOpacity style={styles.loginBtn}onPress={onPress}>
+      <TouchableOpacity style={styles.loginBtn}onPress={() => navigation.navigate("Home")}>
         <Text style={styles.text}>LOGIN</Text>
       </TouchableOpacity>
        </ImageBackground>

@@ -33,20 +33,21 @@ const Home = ({navigation}) => {
           <View style={styles.body}>
             <View style={styles.bodyContent}>
 
-              <TouchableOpacity style={styles.menuBox}onPress={onPressSiswa}>
+              <TouchableOpacity style={styles.menuBox} onPress={onPressSiswa}>
                 <Image style={styles.icon} source={Siswa}/>
                 <Text style={styles.info}>Lihat Siswa</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.menuBox}onPress={onPressIsiraport}>
+              <TouchableOpacity style={styles.menuBox} onPress={onPressIsiraport}>
                 <Image style={styles.icon} source={Nilai}/>
                 <Text style={styles.info}>Input Nilai</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.menuBox}onPress={onPressRekap}>
+              <TouchableOpacity style={styles.menuBox} onPress={onPressRekap}>
                 <Image style={styles.icon} source={Rekap}/>
                 <Text style={styles.info}>Rekap Nilai</Text>
               </TouchableOpacity>
+              
 
              
             </View>
